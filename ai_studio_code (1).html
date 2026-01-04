@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen Bhavika ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #ff4d6d;
+            --dark-pink: #c9184a;
+            --soft-pink: #ffccd5;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #fff0f3;
+            overflow: hidden; /* Prevents scrolling between slides */
+            color: #444;
+        }
+
+        /* Slide Container */
+        .slider {
+            display: flex;
+            width: 400vw; /* 4 slides */
+            height: 100vh;
+            transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Background Decorations */
+        .floating-hearts {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+        }
+
+        /* Timer Styles */
+        .timer {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .time-unit {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+            min-width: 80px;
+        }
+        .time-unit span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--pink);
+        }
+
+        /* Letter Style */
+        .letter-box {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 2px dashed var(--pink);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            line-height: 1.6;
+        }
+
+        /* Game Style */
+        #game-board {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--soft-pink);
+        }
+        .game-target {
+            position: absolute;
+            font-size: 40px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+        }
+
+        /* Buttons */
+        .next-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: var(--pink);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s;
+        }
+        .next-btn:hover {
+            background: var(--dark-pink);
+            transform: scale(1.05);
+        }
+
+        /* Stickers */
+        .sticker { font-size: 50px; margin: 10px; }
+
+        /* Final Wish */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--dark-pink);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slider" id="mainSlider">
+        
+        <!-- SLIDE 1: TIMER -->
+        <section class="slide">
+            <div class="sticker">⏳💖</div>
+            <h1>Bhavika, The Wait is Almost Over...</h1>
+            <p>Every second brings me closer to your special day!</p>
+            <div class="timer">
+                <div class="time-unit"><span id="days">00</span>Days</div>
+                <div class="time-unit"><span id="hours">00</span>Hrs</div>
+                <div class="time-unit"><span id="minutes">00</span>Min</div>
+                <div class="time-unit"><span id="seconds">00</span>Sec</div>
+            </div>
+            <button class="next-btn" onclick="moveSlide(1)">Click to see my message 😍</button>
+        </section>
+
+        <!-- SLIDE 2: LETTER -->
+        <section class="slide">
+            <div class="sticker">💌</div>
+            <div class="letter-box">
+                "My Dearest Bhavika, <br><br>
+                Just a small slide to tell you that you are my everything. As your birthday on the 17th approaches, I find myself thinking about how lucky I am to have you. You make my life a beautiful melody. <br><br>
+                I can't wait to hold you and celebrate the most beautiful girl in the world!"
+                <br><br>
+                — Yours, Yash ❣️
+            </div>
+            <button class="next-btn" onclick="moveSlide(2)">Play a game? 😘</button>
+        </section>
+
+        <!-- SLIDE 3: GAME -->
+        <section class="slide">
+            <h1>Catch My Love! 👩‍❤️‍👨</h1>
+            <p>Catch 5 hearts to reveal my final wish!</p>
+            <div id="game-board"></div>
+            <p>Hearts Caught: <span id="score">0</span></p>
+            <button class="next-btn" id="gameNext" style="display:none;" onclick="moveSlide(3)">See my wish 💋</button>
+        </section>
+
+        <!-- SLIDE 4: FINAL WISH -->
+        <section class="slide">
+            <div class="sticker">🎂👸✨</div>
+            <h1>Happy Birthday Month, Bhavika!</h1>
+            <p>I promise to make January 17th, 2026, the most romantic day of your life.</p>
+            <div class="sticker">😍😘🥰💍🌹</div>
+            <p style="font-size: 1.2rem;">With all my love, forever and always,</p>
+            <div class="signature">Yours, Yash ❣️</div>
+            <button class="next-btn" onclick="moveSlide(0)">See Timer Again 🔄</button>
+        </section>
+
+    </div>
+
+    <script>
+        // 1. SLIDE NAVIGATION
+        let currentSlide = 0;
+        function moveSlide(index) {
+            currentSlide = index;
+            document.getElementById('mainSlider').style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+        // 2. COUNTDOWN TIMER (Jan 17, 2026)
+        const targetDate = new Date("January 17, 2026 00:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d;
+            document.getElementById('hours').innerText = h;
+            document.getElementById('minutes').innerText = m;
+            document.getElementById('seconds').innerText = s;
+        }, 1000);
+
+        // 3. HEART CATCH GAME
+        let score = 0;
+        const board = document.getElementById('game-board');
+        const scoreDisplay = document.getElementById('score');
+        const gameBtn = document.getElementById('gameNext');
+
+        function spawnHeart() {
+            if (score >= 5) return;
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'game-target';
+            heart.style.left = Math.random() * 80 + '%';
+            heart.style.top = Math.random() * 80 + '%';
+            
+            heart.onclick = () => {
+                score++;
+                scoreDisplay.innerText = score;
+                heart.remove();
+                if (score < 5) {
+                    spawnHeart();
+                } else {
+                    board.innerHTML = "<h2 style='margin-top:100px; color:#c9184a;'>You caught all my love! 💖</h2>";
+                    gameBtn.style.display = 'block';
+                }
+            };
+            board.appendChild(heart);
+        }
+        spawnHeart();
+
+        // 4. FLOATING BACKGROUND HEARTS
+        function createBgHeart() {
+            const container = document.body;
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.bottom = '-5vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.color = 'rgba(255, 77, 109, 0.3)';
+            heart.style.transition = 'transform 5s linear, opacity 5s';
+            heart.style.zIndex = '-1';
+            
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createBgHeart, 400);
+
+    </script>
+</body>
+</html>
